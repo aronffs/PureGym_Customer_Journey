@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'DIN Condensed';
+    src: url('assets/fonts/din-condensed-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Abel';
+    src: url('assets/fonts/Abel-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    /* Color constants */
+    /* Blue variants */
+    --blue-primary: #00999D;
+    --blue-secondary: #0B7B7D;
+    --blue-tertiary: #138BA0;
+
+    /* Accent colors */
+    --orange: #E95423;
+    --yellow: #FFD100;
+}
+
+.heading {
+    font-family: 'DIN Condensed', sans-serif;
+}
+
+body {
+    font-family: 'Abel', sans-serif;
+}
+
