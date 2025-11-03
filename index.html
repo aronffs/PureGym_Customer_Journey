@@ -7,7 +7,119 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <audio id="key-sound" src="assets/sound/key-press.mp3" preload="auto"></audio>
+    <div class="pin-container">
+        <img src="assets/img/puregym1.png" alt="PureGym Logo" class="logo" />
+        <h2 class="heading">Enter a 4-Digit PIN and Press OK</h2>
+        <form id="pin-form" autocomplete="off">
+            <div class="inputs">
+                <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" required />
+                <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" required />
+                <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" required />
+                <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" required />
+            </div>
+            <div class="keypad">
+                <button type="button" class="key">1</button>
+                <button type="button" class="key">2</button>
+                <button type="button" class="key">3</button>
+                <button type="button" class="key">4</button>
+                <button type="button" class="key">5</button>
+                <button type="button" class="key">6</button>
+                <button type="button" class="key">7</button>
+                <button type="button" class="key">8</button>
+                <button type="button" class="key">9</button>
+                <button type="button" class="key">C</button>
+                <button type="button" class="key">0</button>
+                <button type="button" class="key ok-key">OK</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Demo PINs and destinations
+        const PIN_MAP = {
+            '1234': 'page1.html',
+            '5678': 'page2.html',
+            '2468': 'page3.html'
+        };
+        const form = document.getElementById('pin-form');
+        const inputs = form.querySelectorAll('input');
+        const heading = document.querySelector('.heading');
+        const defaultHeading = 'Enter a 4-Digit PIN and Press OK';
+        let headingTimeout;
+        const errorMsg = document.querySelector('.error-message');
+        const keySound = document.getElementById('key-sound');
+        // Auto-focus next on input
+        inputs.forEach((input, idx) => {
+            input.addEventListener('input', () => {
+                if (keySound) {
+                    keySound.currentTime = 0;
+                    keySound.play();
+                }
+                if (input.value && idx < inputs.length - 1) {
+                    inputs[idx + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !input.value && idx > 0) {
+                    inputs[idx - 1].focus();
+                }
+            });
+        });
+        // Handle submit
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const pin = Array.from(inputs).map(inp => inp.value).join('');
+            if (PIN_MAP[pin]) {
+                window.location.href = PIN_MAP[pin];
+            } else {
+                heading.textContent = 'Incorrect PIN. Try again.';
+                heading.style.color = 'var(--orange)';
+                inputs.forEach(inp => inp.value = '');
+                if(inputs.length) inputs[0].focus();
+                if (headingTimeout) clearTimeout(headingTimeout);
+                headingTimeout = setTimeout(() => {
+                    heading.textContent = defaultHeading;
+                    heading.style.color = '';
+                }, 2000);
+            }
+        });
+        // Restore heading on input (if user starts typing before 2s timeout)
+        inputs.forEach((input) => {
+            input.addEventListener('input', () => {
+                heading.textContent = defaultHeading;
+                heading.style.color = '';
+                if (headingTimeout) clearTimeout(headingTimeout);
+            });
+        });
+        // Keypad logic
+        const keypad = document.querySelector('.keypad');
+        keypad.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('key')) return;
+            const value = e.target.textContent;
+            let focusedIndex = Array.from(inputs).findIndex(inp => document.activeElement === inp);
+            if (value === 'C') {
+                inputs.forEach(inp => inp.value = '');
+                if (inputs.length) inputs[0].focus();
+                heading.textContent = defaultHeading;
+                heading.style.color = '';
+                if (headingTimeout) clearTimeout(headingTimeout);
+            } else if (value === 'OK') {
+                form.requestSubmit();
+            } else if (/\d/.test(value)) {
+                for (let i = 0; i < inputs.length; i++) {
+                    if (!inputs[i].value) {
+                        inputs[i].value = value;
+                        if (i < inputs.length - 1) {
+                            inputs[i + 1].focus();
+                        } else {
+                            inputs[i].blur();
+                        }
+                        break;
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
 
