@@ -388,3 +388,49 @@ button[type="submit"]:hover {
 }
 /* --- Carousel Styles End --- */
 
+/* --- Full-page Hero Banner --- */
+.full-hero {
+  min-height: 100vh; /* cover the viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(13,110,253,0.95) 0%, rgba(102,166,255,0.95) 100%);
+  color: #fff;
+}
+.hero-title {
+  font-family: 'DIN Condensed', sans-serif;
+  font-size: clamp(3rem, 8vw, 8rem);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.hero-sub {
+  margin-top: 0.6rem;
+  font-size: clamp(1.2rem, 3.2vw, 2.6rem);
+  opacity: 0.95;
+}
+.wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2.2s infinite;
+}
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  50% { transform: rotate(14deg); }
+  65% { transform: rotate(-4deg); }
+  100% { transform: rotate(0deg); }
+}
+@media (max-width: 700px) {
+  .full-hero { padding: 1.2rem 0.8rem; }
+  .hero-title { font-size: clamp(2.4rem, 12vw, 5rem); }
+}
+
+/* End hero banner */
+
