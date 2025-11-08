@@ -26,6 +26,8 @@
 
 .heading {
     font-family: 'DIN Condensed', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 20px;
 }
 
 body {
@@ -41,6 +43,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.pin-container p {
+    width: 50%;
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1.6;
 }
 .inputs {
     display: flex;
@@ -398,7 +407,6 @@ button[type="submit"]:hover {
   text-align: center;
   padding: 2rem;
   box-sizing: border-box;
-  background: linear-gradient(180deg, rgba(13,110,253,0.95) 0%, rgba(102,166,255,0.95) 100%);
   color: #fff;
 }
 .hero-title {
@@ -418,6 +426,7 @@ button[type="submit"]:hover {
   display: inline-block;
   transform-origin: 70% 70%;
   animation: wave 2.2s infinite;
+  padding: 2rem;
 }
 @keyframes wave {
   0% { transform: rotate(0deg); }
@@ -433,4 +442,46 @@ button[type="submit"]:hover {
 }
 
 /* End hero banner */
+
+/* --- Timeline cards (at the end) --- */
+.timeline-cards {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: stretch;
+  width: 90vw;
+  max-width: 1200px;
+  margin: 60px auto;
+  box-sizing: border-box;
+  padding: 15px;
+}
+.timeline-card {
+  background: #232627;
+  border-radius: 20px;
+  padding: 40px 32px;
+  flex: 1 1 0;
+  min-width: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  font-size: 1.3rem;
+}
+.timeline-card h4 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+}
+.timeline-card ul {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+@media (max-width: 900px) {
+  .timeline-cards { gap: 12px; }
+}
+@media (max-width: 600px) {
+  .timeline-cards {
+    flex-direction: column;
+  }
+  .timeline-card {
+    width: 100%;
+  }
+}
 
