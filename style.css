@@ -227,6 +227,12 @@ button[type="submit"]:hover {
 .timeline-event.left .content {
   text-align: right;
 }
+.timeline-event img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+}
 .timeline-event::after {
   display: none;
 }
@@ -467,7 +473,7 @@ button[type="submit"]:hover {
   border-radius: 20px;
   padding: 40px 32px;
   flex: 1 1 0;
-  min-width: 0;
+  max-width: 400px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   font-size: 1.3rem;
 }
@@ -480,6 +486,7 @@ button[type="submit"]:hover {
   margin: 0;
   padding-left: 1.4rem;
 }
+
 @media (max-width: 900px) {
   .timeline-cards { gap: 12px; }
 }
