@@ -252,6 +252,10 @@ button[type="submit"]:hover {
 .timeline-event.right::before {
   left: -34px;
 }
+#shrink {
+  height: 20%;
+  border-radius: 12px;
+}
 @media (max-width: 850px) {
   .timeline {
     width: 99vw;
