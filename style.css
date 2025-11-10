@@ -292,16 +292,14 @@ button[type="submit"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 40px auto 80px auto;
-  max-width: 600px;
+  min-width: 100%;
   background: transparent;
   border-radius: 22px;
   position: relative;
-  padding: 26px 0;
 }
 .carousel {
-  width: 320px;
-  height: 220px;
+  width: 400px;
+  height: auto;
   display: flex;
   overflow: hidden;
   align-items: center;
