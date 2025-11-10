@@ -64,6 +64,8 @@
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Backspace' && !input.value && idx > 0) {
                     inputs[idx - 1].focus();
+                } else if (e.key === 'Enter') {
+                    form.requestSubmit();
                 }
             });
         });
