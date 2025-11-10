@@ -99,6 +99,14 @@ button[type="submit"]:hover {
     justify-content: center;
     margin: 24px 0;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .keypad .key {
     width: 60px;
     height: 60px;
@@ -140,7 +148,7 @@ button[type="submit"]:hover {
 .logo {
     display: block;
     margin: 0 auto 18px auto;
-    max-width: 250px;
+    max-width: 350px;
     width: 70vw;
     height: auto;
 }
