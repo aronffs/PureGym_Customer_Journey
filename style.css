@@ -474,7 +474,39 @@ button[type="submit"]:hover {
   margin: 60px auto;
   box-sizing: border-box;
   padding: 15px;
+  position: relative;
 }
+
+/* Main timeline extension */
+.timeline-cards::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 40px;
+  background: var(--blue-primary);
+  border-radius: 4px;
+  box-shadow: 0 0 6px 1.2px var(--blue-primary), 0 0 8px 2px #30ffff33;
+  z-index: 1;
+}
+
+/* Horizontal branch line */
+.timeline-cards::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 4px;
+  background: var(--blue-primary);
+  border-radius: 2px;
+  box-shadow: 0 0 3px 0.7px var(--blue-primary), 0 0 5px 1px #30ffff22;
+  z-index: 1;
+}
+
 .timeline-card {
   background: #232627;
   border-radius: 20px;
@@ -483,7 +515,25 @@ button[type="submit"]:hover {
   max-width: 400px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   font-size: 1.3rem;
+  position: relative;
+  z-index: 2;
 }
+
+/* Vertical connectors from horizontal line to cards */
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 24px;
+  background: var(--blue-primary);
+  border-radius: 2px;
+  box-shadow: 0 0 3px 0.7px var(--blue-primary), 0 0 5px 1px #30ffff22;
+  z-index: 1;
+}
+
 .timeline-card h4 {
   margin-top: 0;
   margin-bottom: 16px;
@@ -497,12 +547,34 @@ button[type="submit"]:hover {
 @media (max-width: 900px) {
   .timeline-cards { gap: 12px; }
 }
+
 @media (max-width: 600px) {
   .timeline-cards {
     flex-direction: column;
+    align-items: center;
   }
   .timeline-card {
     width: 100%;
+    max-width: 500px;
+  }
+  
+  /* Vertical timeline for mobile */
+  .timeline-cards::before {
+    top: -60px;
+    height: calc(100% + 80px);
+    width: 6px;
+  }
+  
+  .timeline-cards::after {
+    display: none;
+  }
+  
+  .timeline-card::before {
+    top: 50%;
+    left: -30px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 4px;
   }
 }
 
