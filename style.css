@@ -200,7 +200,7 @@ button[type="submit"]:hover {
 
 .timeline-event {
   position: relative;
-  width: 46%;
+  width: 60%;
   margin-bottom: 60px;
   display: flex;
   justify-content: flex-end;
@@ -212,7 +212,7 @@ button[type="submit"]:hover {
   justify-content: flex-start;
 }
 .timeline-event.left {
-  left: 0;
+  left: -14%;
   justify-content: flex-end;
 }
 .timeline-event .content {
@@ -232,10 +232,16 @@ button[type="submit"]:hover {
 .timeline-event.left .content {
   text-align: right;
 }
+.video-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 12px;
+}
 .timeline-event img {
   width: 100%;
-  max-width: 400px;
-  height: auto;
+  height: 100%;
   border-radius: 12px;
 }
 .timeline-event::after {
@@ -304,10 +310,8 @@ button[type="submit"]:hover {
   min-width: 100%;
   background: transparent;
   border-radius: 22px;
-  position: relative;
 }
 .carousel {
-  width: 400px;
   height: auto;
   display: flex;
   overflow: hidden;
@@ -320,8 +324,6 @@ button[type="submit"]:hover {
   transform: scale(0.98);
   transition: opacity 0.5s, transform 0.5s;
   position: absolute;
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -334,13 +336,12 @@ button[type="submit"]:hover {
 }
 .carousel-slide img {
   width: 100%;
-  height: 200px;
   object-fit: cover;
   border-radius: 14px;
   box-shadow: 0 2px 8px #0009;
 }
 .carousel-btn {
-  background: rgba(0,153,157,0.27); /* transparent blue as default */
+  background: rgba(0,153,157,0.7); /* more visible blue background */
   border: none;
   color: transparent; /* arrows totally transparent by default */
   font-size: 1.1rem; /* tiny arrow size */
@@ -353,8 +354,8 @@ button[type="submit"]:hover {
   justify-content: center;
   margin: 0 10px;
   transition: background 0.18s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px #00999d33;
-  position: relative;
+  box-shadow: 0 2px 8px rgba(0,153,157,0.4);
+  position: absolute;
 }
 .carousel-btn::before {
   content: '';
@@ -369,11 +370,11 @@ button[type="submit"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
+  opacity: 1;
 }
 .carousel-btn-prev {
   z-index: 100;
-  right: -50px; /* tiny left arrow */
+  left: 50px; /* tiny left arrow */
 }
 .carousel-btn-next {
   z-index: 100;
@@ -398,11 +399,12 @@ button[type="submit"]:hover {
 @media (max-width: 500px) {
   .carousel {
     width: 90vw;
-    height: 38vw;
-    min-height: 150px;
+    height: 50vw;
+    min-height: 200px;
   }
   .carousel-slide img {
-    height: 32vw;
+    height: 45vw;
+    min-height: 180px;
   }
   .carousel-container {
     max-width: 98vw;
@@ -538,6 +540,7 @@ button[type="submit"]:hover {
   margin-top: 0;
   margin-bottom: 16px;
   font-size: 1.6rem;
+  text-align: center;
 }
 .timeline-card ul {
   margin: 0;
