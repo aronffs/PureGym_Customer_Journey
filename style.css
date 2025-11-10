@@ -30,6 +30,10 @@
     margin-bottom: 20px;
 }
 
+.heading.journey-heading {
+    font-size: 4.5rem;
+}
+
 body {
     font-family: 'Abel', sans-serif;
     background: #181A1B;
@@ -48,9 +52,10 @@ body {
 .pin-container p {
     width: 50%;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 1.6;
 }
+
 .inputs {
     display: flex;
     gap: 10px;
@@ -155,19 +160,18 @@ button[type="submit"]:hover {
 
 .corner-logo {
     position: fixed;
-    top: -50px;
-    left: -50px;
+    top: 50px;
+    left: -25px;
     width: 240px;
-    height: 240px;
+    height: 100px;
     object-fit: contain;
     z-index: 10;
 }
 @media (max-width: 700px) {
     .corner-logo {
-        width: 165px;
-        height: 165px;
-        top: 0px;
-        left: 0px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 }
 
@@ -228,6 +232,12 @@ button[type="submit"]:hover {
 .timeline-event.left .content {
   text-align: right;
 }
+.timeline-event img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+}
 .timeline-event::after {
   display: none;
 }
@@ -246,6 +256,10 @@ button[type="submit"]:hover {
 }
 .timeline-event.right::before {
   left: -34px;
+}
+#shrink {
+  height: 20%;
+  border-radius: 12px;
 }
 @media (max-width: 850px) {
   .timeline {
@@ -287,16 +301,14 @@ button[type="submit"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 40px auto 80px auto;
-  max-width: 600px;
+  min-width: 100%;
   background: transparent;
   border-radius: 22px;
   position: relative;
-  padding: 26px 0;
 }
 .carousel {
-  width: 320px;
-  height: 220px;
+  width: 400px;
+  height: auto;
   display: flex;
   overflow: hidden;
   align-items: center;
@@ -468,7 +480,7 @@ button[type="submit"]:hover {
   border-radius: 20px;
   padding: 40px 32px;
   flex: 1 1 0;
-  min-width: 0;
+  max-width: 400px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   font-size: 1.3rem;
 }
@@ -481,6 +493,7 @@ button[type="submit"]:hover {
   margin: 0;
   padding-left: 1.4rem;
 }
+
 @media (max-width: 900px) {
   .timeline-cards { gap: 12px; }
 }
